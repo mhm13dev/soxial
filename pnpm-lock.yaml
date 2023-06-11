@@ -38,6 +38,9 @@ importers:
       autoprefixer:
         specifier: 10.4.14
         version: 10.4.14(postcss@8.4.24)
+      clsx:
+        specifier: ^1.2.1
+        version: 1.2.1
       eslint:
         specifier: 8.42.0
         version: 8.42.0
@@ -66,6 +69,9 @@ importers:
       eslint-config-custom:
         specifier: workspace:*
         version: link:../../packages/eslint-config-custom
+      tailwind-config:
+        specifier: workspace:*
+        version: link:../../packages/tailwind-config
       tsconfig:
         specifier: workspace:*
         version: link:../../packages/tsconfig
@@ -84,6 +90,12 @@ importers:
       eslint-plugin-react:
         specifier: 7.32.2
         version: 7.32.2(eslint@8.42.0)
+
+  packages/tailwind-config:
+    dependencies:
+      tailwindcss:
+        specifier: 3.3.2
+        version: 3.3.2
 
   packages/tsconfig: {}
 
@@ -853,6 +865,11 @@ packages:
     resolution: {integrity: sha512-JQHZ2QMW6l3aH/j6xCqQThY/9OH4D/9ls34cgkUBiEeocRTU04tHfKPBsUK1PqZCUQM7GiA0IIXJSuXHI64Kbg==}
     engines: {node: '>=0.8'}
     dev: true
+
+  /clsx@1.2.1:
+    resolution: {integrity: sha512-EcR6r5a8bj6pu3ycsa/E/cKVGuTgZJZdsyUYHOksG/UHIiKfjxzRxYJpyVBwYaQeOvghal9fcc4PidlgzugAQg==}
+    engines: {node: '>=6'}
+    dev: false
 
   /color-convert@1.9.3:
     resolution: {integrity: sha512-QfAUtd+vFdAtFQcC8CCyYt1fYWxSqAiK2cSD6zDB8N3cpsEBAvRxp9zOGg6G/SHHJYAT88/az/IuDGALsNVbGg==}
