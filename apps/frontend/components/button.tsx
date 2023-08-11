@@ -11,7 +11,7 @@ export const Button: React.FC<ButtonProps> = ({
   return (
     <button
       className={clsx(
-        "py-1 px-4 rounded bg-green-500/20 text-green-500 hover:bg-green-500/30 transition",
+        "rounded bg-green-500/20 px-4 py-1 text-green-500 transition hover:bg-green-500/30",
         className
       )}
       {...props}
