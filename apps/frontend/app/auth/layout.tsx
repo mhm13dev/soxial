@@ -14,7 +14,29 @@ interface Props {
 
 const AuthLayout: React.FC<Props> = ({ children }) => {
   const pathname = usePathname();
-  const isSignInPage = pathname === AppRoutes.auth.signin;
+
+  const data: {
+    topLink: string;
+    topLinkText: string;
+    title: string;
+    subtitle: string;
+  } = {
+    topLink: AppRoutes.auth.register,
+    topLinkText: "Create an account",
+    title: "Sign in to Soxial",
+    subtitle: "A social media platform for everyone",
+  };
+  if (pathname === AppRoutes.auth.register) {
+    data.topLink = AppRoutes.auth.signin;
+    data.topLinkText = "Already have an account? Sign in";
+    data.title = "Create account on Soxial";
+  } else if (pathname === AppRoutes.auth.forgot_password) {
+    data.topLink = AppRoutes.auth.signin;
+    data.topLinkText = "Remembered your password? Sign in";
+    data.title = "Reset Soxial password";
+    data.subtitle =
+      "Enter your email address or username and we'll send a link to your inbox!";
+  }
 
   return (
     <main className={"flex min-h-screen"}>
@@ -34,14 +56,10 @@ const AuthLayout: React.FC<Props> = ({ children }) => {
       <section className="section-right flex w-full flex-col bg-white p-4">
         <div className="flex justify-end">
           <Link
-            href={
-              isSignInPage ? AppRoutes.auth.register : AppRoutes.auth.signin
-            }
+            href={data.topLink}
             className="text-sm font-medium underline md:text-base"
           >
-            {isSignInPage
-              ? "Create an account"
-              : "Already have an account? Sign in"}
+            {data.topLinkText}
           </Link>
         </div>
 
@@ -49,11 +67,9 @@ const AuthLayout: React.FC<Props> = ({ children }) => {
           <div className="mx-auto max-w-sm">
             <SoxialLogoDark className="mx-auto mb-2 h-12 w-12" />
             <h1 className="mb-2 text-center text-2xl font-bold md:text-3xl md:font-semibold">
-              {isSignInPage ? "Sign in to Soxial" : "Create account on Soxial"}
+              {data.title}
             </h1>
-            <p className="mb-8 text-center text-sm">
-              A social media platform for everyone
-            </p>
+            <p className="mb-8 text-center text-sm">{data.subtitle}</p>
 
             {children}
           </div>
