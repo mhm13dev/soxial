@@ -1,13 +1,9 @@
 import React from "react";
-import cn from "utils/cn";
+import cn from "utils/src/cn";
 
 interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {}
 
-export const Button: React.FC<ButtonProps> = ({
-  children,
-  className,
-  ...props
-}) => {
+const Button: React.FC<ButtonProps> = ({ children, className, ...props }) => {
   return (
     <button
       className={cn(
@@ -20,3 +16,5 @@ export const Button: React.FC<ButtonProps> = ({
     </button>
   );
 };
+
+export default Button;
