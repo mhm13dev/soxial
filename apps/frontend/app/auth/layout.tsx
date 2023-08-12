@@ -49,7 +49,7 @@ const AuthLayout: React.FC<Props> = ({ children }) => {
           <div className="mx-auto max-w-sm">
             <SoxialLogoDark className="mx-auto mb-2 h-12 w-12" />
             <h1 className="mb-2 text-center text-2xl font-bold md:text-3xl md:font-semibold">
-              Create account on Soxial
+              {isSignInPage ? "Sign in to Soxial" : "Create account on Soxial"}
             </h1>
             <p className="mb-8 text-center text-sm">
               A social media platform for everyone
