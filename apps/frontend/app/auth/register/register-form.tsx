@@ -9,7 +9,7 @@ const RegisterForm: React.FC = () => {
     const formData = new FormData(e.currentTarget);
 
     const data = {
-      usernameOrEmail: formData.get("usernameOrEmail"),
+      email: formData.get("email"),
       password: formData.get("password"),
       confirmPassword: formData.get("confirmPassword"),
     };
@@ -20,9 +20,9 @@ const RegisterForm: React.FC = () => {
   return (
     <form onSubmit={handleSubmit}>
       <FormInput
-        type="text"
-        name="usernameOrEmail"
-        placeholder="Email or username"
+        type="email"
+        name="email"
+        placeholder="Email"
         className="mb-4"
       />
       <FormInput
