@@ -99,12 +99,12 @@ importers:
       '@types/react-dom':
         specifier: 18.2.7
         version: 18.2.7
+      assets:
+        specifier: workspace:*
+        version: link:../../packages/assets
       autoprefixer:
         specifier: 10.4.14
         version: 10.4.14(postcss@8.4.27)
-      clsx:
-        specifier: ^2.0.0
-        version: 2.0.0
       eslint:
         specifier: 8.47.0
         version: 8.47.0
@@ -123,15 +123,18 @@ importers:
       react-dom:
         specifier: 18.2.0
         version: 18.2.0(react@18.2.0)
-      tailwind-merge:
-        specifier: ^1.14.0
-        version: 1.14.0
       tailwindcss:
         specifier: 3.3.3
         version: 3.3.3
       typescript:
         specifier: 5.1.6
         version: 5.1.6
+      ui:
+        specifier: workspace:*
+        version: link:../../packages/ui
+      utils:
+        specifier: workspace:*
+        version: link:../../packages/utils
     devDependencies:
       '@svgr/webpack':
         specifier: ^8.0.1
@@ -151,6 +154,8 @@ importers:
       tsconfig:
         specifier: workspace:*
         version: link:../../packages/tsconfig
+
+  packages/assets: {}
 
   packages/eslint-config-custom:
     dependencies:
@@ -180,6 +185,47 @@ importers:
         version: 3.3.3
 
   packages/tsconfig: {}
+
+  packages/ui:
+    dependencies:
+      react:
+        specifier: 18.2.0
+        version: 18.2.0
+      tailwindcss:
+        specifier: 3.3.3
+        version: 3.3.3
+      utils:
+        specifier: workspace:*
+        version: link:../utils
+    devDependencies:
+      '@types/node':
+        specifier: 20.4.9
+        version: 20.4.9
+      '@types/react':
+        specifier: 18.2.20
+        version: 18.2.20
+      '@types/react-dom':
+        specifier: 18.2.7
+        version: 18.2.7
+      tailwind-config:
+        specifier: workspace:*
+        version: link:../tailwind-config
+      tsconfig:
+        specifier: workspace:*
+        version: link:../tsconfig
+
+  packages/utils:
+    dependencies:
+      clsx:
+        specifier: ^2.0.0
+        version: 2.0.0
+      tailwind-merge:
+        specifier: ^1.14.0
+        version: 1.14.0
+    devDependencies:
+      tsconfig:
+        specifier: workspace:*
+        version: link:../tsconfig
 
 packages:
 
@@ -2567,7 +2613,6 @@ packages:
 
   /@types/prop-types@15.7.5:
     resolution: {integrity: sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==}
-    dev: false
 
   /@types/qs@6.9.7:
     resolution: {integrity: sha512-FGa1F62FT09qcrueBA6qYTrJPVDzah9a+493+o2PCXsesWHIn27G98TsSMs3WPNbZIEj4+VJf6saSFpvD+3Zsw==}
@@ -2581,7 +2626,6 @@ packages:
     resolution: {integrity: sha512-GRaAEriuT4zp9N4p1i8BDBYmEyfo+xQ3yHjJU4eiK5NDa1RmUZG+unZABUTK4/Ox/M+GaHwb6Ow8rUITrtjszA==}
     dependencies:
       '@types/react': 18.2.20
-    dev: false
 
   /@types/react@18.2.20:
     resolution: {integrity: sha512-WKNtmsLWJM/3D5mG4U84cysVY31ivmyw85dE84fOCk5Hx78wezB/XEjVPWl2JTZ5FkEeaTJf+VgUAUn3PE7Isw==}
@@ -2589,11 +2633,9 @@ packages:
       '@types/prop-types': 15.7.5
       '@types/scheduler': 0.16.3
       csstype: 3.1.2
-    dev: false
 
   /@types/scheduler@0.16.3:
     resolution: {integrity: sha512-5cJ8CB4yAx7BH1oMvdU0Jh9lrEXyPkar6F9G/ERswkCuvP4KQZfZkSjcMbAICCpQTN4OuZn8tz0HiKv9TGZgrQ==}
-    dev: false
 
   /@types/semver@7.5.0:
     resolution: {integrity: sha512-G8hZ6XJiHnuhQKR7ZmysCeJWE08o8T0AXtk5darsCaTVsYZhhgUrq53jizaR2FvsoeCwJhlmwTjkXBY5Pn/ZHw==}
@@ -3902,7 +3944,6 @@ packages:
 
   /csstype@3.1.2:
     resolution: {integrity: sha512-I7K1Uu0MBPzaFKg4nI5Q7Vs2t+3gWWW648spaF+Rg7pI9ds18Ugn+lvg4SHczUdKlHI5LWBXyqfS8+DufyBsgQ==}
-    dev: false
 
   /damerau-levenshtein@1.0.8:
     resolution: {integrity: sha512-sdQSFB7+llfUcQHUQO3+B8ERRj0Oa4w9POWMI/puGtuf7gFywGmkaLCElnudfTiKZV+NvHqL0ifzdrI8Ro7ESA==}

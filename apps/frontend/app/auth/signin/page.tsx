@@ -1,19 +1,19 @@
 import { NextPage } from "next";
 import Link from "next/link";
 import Image from "next/image";
+import SoxialLogoLight from "assets/svg/soxial-logo-light.svg";
+import SoxialLogoDark from "assets/svg/soxial-logo-dark.svg";
+import AuthPageCover from "assets/images/auth-page-cover.jpg";
 import { AppRoutes } from "@/constants/app-routes";
-import SoxialLogoLight from "@/assets/svg/soxial-logo-light.svg";
-import SoxialLogoDark from "@/assets/svg/soxial-logo-dark.svg";
-import AuthPageCover from "@/assets/images/auth-page-cover.jpg";
 
 const SignIn: NextPage = () => {
   return (
-    <main className="flex min-h-screen">
+    <main className={"flex min-h-screen"}>
       <section className="section-left relative hidden w-full bg-theme-dark/70 p-4 lg:block">
         <Image
           src={AuthPageCover}
           alt="Auth page cover"
-          layout="fill"
+          fill={true}
           className="absolute inset-0 -z-10 h-full w-full object-cover"
         />
         <header className="flex items-center">

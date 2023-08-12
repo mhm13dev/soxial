@@ -1,5 +1,5 @@
 import React from "react";
-import clsx from "clsx";
+import cn from "utils/cn";
 
 interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {}
 
@@ -10,7 +10,7 @@ export const Button: React.FC<ButtonProps> = ({
 }) => {
   return (
     <button
-      className={clsx(
+      className={cn(
         "rounded bg-green-500/20 px-4 py-1 text-green-500 transition hover:bg-green-500/30",
         className
       )}
