@@ -32,7 +32,7 @@ const AuthLayout: React.FC<Props> = ({ children }) => {
     data.title = "Create account on Soxial";
   } else if (pathname === AppRoutes.auth.forgot_password) {
     data.topLink = AppRoutes.auth.signin;
-    data.topLinkText = "Remembered your password? Sign in";
+    data.topLinkText = "Sign in";
     data.title = "Reset Soxial password";
     data.subtitle =
       "Enter your email address or username and we'll send a link to your inbox!";

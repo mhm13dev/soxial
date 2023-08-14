@@ -23,7 +23,7 @@ const ForgotPasswordForm: React.FC = () => {
         placeholder="Email or username"
         className="mb-4"
       />
-      <FormButton type="submit">Reset Password</FormButton>
+      <FormButton type="submit">Get Reset Link</FormButton>
     </form>
   );
 };
