@@ -1,20 +1,60 @@
 "use client";
 
 import React from "react";
+import sleep from "sleep-promise";
+import { toastMessage } from "ui";
 import { FormButton, FormInput } from "../shared";
 
 const RegisterForm: React.FC = () => {
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const formData = new FormData(e.currentTarget);
+  const submitButtonRef = React.useRef<HTMLButtonElement>(null);
 
-    const data = {
-      email: formData.get("email"),
-      password: formData.get("password"),
-      confirmPassword: formData.get("confirmPassword"),
-    };
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    try {
+      e.preventDefault();
 
-    console.log(data);
+      if (submitButtonRef.current) {
+        submitButtonRef.current.disabled = true;
+      }
+
+      const form = e.currentTarget;
+      const formData = new FormData(form);
+
+      const data = {
+        email: formData.get("email")?.toString() ?? "",
+        password: formData.get("password")?.toString() ?? "",
+        confirmPassword: formData.get("confirmPassword")?.toString() ?? "",
+      };
+
+      console.log(data);
+
+      if (
+        data.email.trim() === "" ||
+        data.password === "" ||
+        data.confirmPassword === ""
+      ) {
+        throw new Error("All fields are required");
+      }
+
+      if (data.password !== data.confirmPassword) {
+        throw new Error("Passwords do not match");
+      }
+
+      await sleep(2000);
+
+      toastMessage("Registration is successful", {
+        variant: "dark",
+        type: "success",
+      });
+    } catch (err: any) {
+      toastMessage(err.message, {
+        variant: "dark",
+        type: "error",
+      });
+    } finally {
+      if (submitButtonRef.current) {
+        submitButtonRef.current.disabled = false;
+      }
+    }
   };
 
   return (
@@ -37,7 +77,9 @@ const RegisterForm: React.FC = () => {
         placeholder="Confirm Password"
         className="mb-5"
       />
-      <FormButton type="submit">Register</FormButton>
+      <FormButton type="submit" ref={submitButtonRef}>
+        Register
+      </FormButton>
     </form>
   );
 };

@@ -1,4 +1,5 @@
 import { Inter } from "next/font/google";
+import { Toaster } from "react-hot-toast";
 import cn from "utils/src/cn";
 import "./globals.css";
 
@@ -16,7 +17,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={cn(inter.className, "text-theme-dark")}>{children}</body>
+      <body className={cn(inter.className, "text-theme-dark")}>
+        {children}
+        <Toaster />
+      </body>
     </html>
   );
 }

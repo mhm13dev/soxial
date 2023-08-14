@@ -2,20 +2,52 @@
 
 import React from "react";
 import Link from "next/link";
+import sleep from "sleep-promise";
+import { toastMessage } from "ui";
 import { AppRoutes } from "@/constants/app-routes";
 import { FormButton, FormInput } from "../shared";
 
 const SignInForm: React.FC = () => {
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const formData = new FormData(e.currentTarget);
+  const submitButtonRef = React.useRef<HTMLButtonElement>(null);
 
-    const data = {
-      usernameOrEmail: formData.get("usernameOrEmail"),
-      password: formData.get("password"),
-    };
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    try {
+      e.preventDefault();
 
-    console.log(data);
+      if (submitButtonRef.current) {
+        submitButtonRef.current.disabled = true;
+      }
+
+      const form = e.currentTarget;
+      const formData = new FormData(form);
+
+      const data = {
+        usernameOrEmail: formData.get("usernameOrEmail")?.toString() ?? "",
+        password: formData.get("password")?.toString() ?? "",
+      };
+
+      console.log(data);
+
+      if (data.usernameOrEmail.trim() === "" || data.password === "") {
+        throw new Error("Email/username and password are required");
+      }
+
+      await sleep(2000);
+
+      toastMessage("Sign in successful", {
+        variant: "dark",
+        type: "success",
+      });
+    } catch (err: any) {
+      toastMessage(err.message, {
+        variant: "dark",
+        type: "error",
+      });
+    } finally {
+      if (submitButtonRef.current) {
+        submitButtonRef.current.disabled = false;
+      }
+    }
   };
 
   return (
@@ -40,7 +72,9 @@ const SignInForm: React.FC = () => {
           Forgot password?
         </Link>
       </div>
-      <FormButton type="submit">Sign in</FormButton>
+      <FormButton type="submit" ref={submitButtonRef}>
+        Sign in
+      </FormButton>
     </form>
   );
 };
