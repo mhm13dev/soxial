@@ -26,9 +26,9 @@ const toastMessage = (
       let icon = null;
 
       if (type === "success") {
-        icon = <MdCheckCircle className="h-4 w-4" />;
+        icon = <MdCheckCircle className="h-5 w-5" />;
       } else if (type === "error") {
-        icon = <MdCancel className="h-4 w-4" />;
+        icon = <MdCancel className="h-5 w-5" />;
       }
 
       if (t.icon) {
@@ -38,7 +38,7 @@ const toastMessage = (
       return (
         <div
           className={cn(
-            "flex gap-x-1.5 items-center transform rounded-md px-3 py-2 text-sm transition-all border",
+            "flex gap-x-1.5 items-start transform rounded-md px-3 py-2 text-sm transition-all border",
             variant === "dark" && "bg-theme-dark text-white",
             variant === "light" && "bg-white text-theme-dark",
             t.visible
