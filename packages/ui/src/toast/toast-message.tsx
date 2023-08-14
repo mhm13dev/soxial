@@ -9,8 +9,8 @@ interface Params {
       Toast,
       "id" | "className" | "icon" | "style" | "duration" | "position"
     > & {
-      variant: "light" | "dark" | undefined;
-      type: "success" | "error" | undefined;
+      variant: "light" | "dark" | undefined; // Variant decides the colors
+      type: "success" | "error" | undefined; // Type decides the icon
     }
   >;
 }
