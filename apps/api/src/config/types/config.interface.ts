@@ -1,5 +1,13 @@
-import { ICore } from "./core.interface";
+import { AppEnv } from "./app-env.enum";
 
 export class IConfig {
-  core: ICore;
+  core: {
+    APP_ENV: AppEnv;
+    PORT: number;
+    CORS_ORIGINS: string[];
+  };
+
+  db: {
+    MONGODB_URI: string;
+  };
 }

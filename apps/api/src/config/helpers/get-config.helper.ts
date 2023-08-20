@@ -7,5 +7,9 @@ export function getConfig(): IConfig {
       PORT: parseInt(process.env.PORT, 10) || 5000,
       CORS_ORIGINS: process.env.CORS_ORIGINS.split(","),
     },
+
+    db: {
+      MONGODB_URI: process.env.MONGODB_URI,
+    },
   };
 }

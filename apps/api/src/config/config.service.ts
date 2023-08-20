@@ -10,6 +10,10 @@ export class ConfigService {
     return this.getConfig().core;
   }
 
+  get db(): IConfig["db"] {
+    return this.getConfig().db;
+  }
+
   private getConfig(): IConfig {
     if (!this.config) {
       this.config = getConfig();
