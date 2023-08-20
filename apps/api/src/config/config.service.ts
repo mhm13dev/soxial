@@ -14,6 +14,10 @@ export class ConfigService {
     return this.getConfig().db;
   }
 
+  get auth(): IConfig["auth"] {
+    return this.getConfig().auth;
+  }
+
   private getConfig(): IConfig {
     if (!this.config) {
       this.config = getConfig();

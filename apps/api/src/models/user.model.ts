@@ -31,3 +31,13 @@ export class User {
 export const UserSchema = SchemaFactory.createForClass(User);
 
 export type UserDocument = HydratedDocument<User>;
+
+export type SafeUserAuthenticated = Pick<
+  UserDocument,
+  "_id" | "email" | "username" | "createdAt" | "updatedAt"
+>;
+
+export type SafeUser = Pick<
+  UserDocument,
+  "_id" | "email" | "username" | "createdAt" | "updatedAt"
+>;
